@@ -1,6 +1,9 @@
 """
 步骤3: K-Means聚类与2D可视化
 """
+import os
+os.environ['OMP_NUM_THREADS'] = '1'
+
 import numpy as np
 import pandas as pd
 from sklearn.cluster import KMeans
@@ -12,10 +15,10 @@ plt.rcParams['axes.unicode_minus'] = False
 
 # 加载数据
 embeddings = np.load('embeddings.npy')
-summaries = pd.read_csv('summaries.csv')['摘要'].tolist()
+summaries = pd.read_excel('conversations_with_summary.xlsx')['摘要'].tolist()
 
 # K-Means聚类 (K=3)
-kmeans = KMeans(n_clusters=3, random_state=42)
+kmeans = KMeans(n_clusters=3, random_state=42, n_init=10)
 labels = kmeans.fit_predict(embeddings)
 centroids = kmeans.cluster_centers_
 
