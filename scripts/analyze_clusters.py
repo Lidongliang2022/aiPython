@@ -7,8 +7,8 @@ from sklearn.cluster import KMeans
 from sklearn.metrics.pairwise import euclidean_distances
 
 # 加载数据
-embeddings = np.load('embeddings.npy')
-df = pd.read_excel('conversations_with_summary.xlsx')
+embeddings = np.load('../data/embeddings.npy')
+df = pd.read_excel('../data/conversations_with_summary.xlsx')
 
 # K-Means聚类 (K=5)
 kmeans = KMeans(n_clusters=5, random_state=42, n_init=10)
@@ -50,7 +50,7 @@ for i in range(5):
     print(f"摘要: {df.iloc[farthest_idx]['摘要']}")
 
 # 保存带标签的DataFrame
-df.to_excel('conversations_with_clusters.xlsx', index=False, engine='openpyxl')
+df.to_excel('../data/conversations_with_clusters.xlsx', index=False, engine='openpyxl')
 print(f"\n{'='*80}")
-print("✅ 已保存带聚类标签的数据到: conversations_with_clusters.xlsx")
+print("✅ 已保存带聚类标签的数据到: ../data/conversations_with_clusters.xlsx")
 print(f"{'='*80}")

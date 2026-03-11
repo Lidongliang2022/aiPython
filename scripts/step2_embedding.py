@@ -14,7 +14,7 @@ print("加载模型中...")
 model = SentenceTransformer(model_dir)
 
 # 读取摘要
-df = pd.read_excel('conversations_with_summary.xlsx')
+df = pd.read_excel('../data/conversations_with_summary.xlsx')
 summaries = df['摘要'].tolist()
 
 print(f"开始向量化 {len(summaries)} 条摘要...")
@@ -23,7 +23,7 @@ print(f"开始向量化 {len(summaries)} 条摘要...")
 embeddings = model.encode(summaries, show_progress_bar=True)
 
 # 保存
-np.save('embeddings.npy', embeddings)
+np.save('../data/embeddings.npy', embeddings)
 print(f"\n向量shape: {embeddings.shape}")
 print(f"示例向量前10维: {embeddings[0][:10]}")
 print("向量已保存到 embeddings.npy")

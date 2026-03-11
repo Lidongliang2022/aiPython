@@ -14,8 +14,8 @@ plt.rcParams['font.sans-serif'] = ['Arial Unicode MS']
 plt.rcParams['axes.unicode_minus'] = False
 
 # 加载数据
-embeddings = np.load('embeddings.npy')
-summaries = pd.read_excel('conversations_with_summary.xlsx')['摘要'].tolist()
+embeddings = np.load('../data/embeddings.npy')
+summaries = pd.read_excel('../data/conversations_with_summary.xlsx')['摘要'].tolist()
 
 # 测试不同的K值
 k_values = [5, 10, 20]
@@ -62,7 +62,7 @@ for k in k_values:
     plt.grid(alpha=0.3)
     plt.tight_layout()
 
-    filename = f'kmeans_k{k}.png'
+    filename = f'../output/kmeans_k{k}.png'
     plt.savefig(filename, dpi=300, bbox_inches='tight')
     print(f"已保存: {filename}")
     plt.close()

@@ -14,8 +14,8 @@ plt.rcParams['font.sans-serif'] = ['Arial Unicode MS']  # macOS中文支持
 plt.rcParams['axes.unicode_minus'] = False
 
 # 加载数据
-embeddings = np.load('embeddings.npy')
-summaries = pd.read_excel('conversations_with_summary.xlsx')['摘要'].tolist()
+embeddings = np.load('../data/embeddings.npy')
+summaries = pd.read_excel('../data/conversations_with_summary.xlsx')['摘要'].tolist()
 
 # K-Means聚类 (K=3)
 kmeans = KMeans(n_clusters=3, random_state=42, n_init=10)
@@ -59,6 +59,6 @@ plt.ylabel('PCA维度2')
 plt.legend()
 plt.grid(alpha=0.3)
 plt.tight_layout()
-plt.savefig('kmeans_clustering.png', dpi=300)
-print("\n图表已保存: kmeans_clustering.png")
+plt.savefig('../output/kmeans_clustering.png', dpi=300)
+print("\n图表已保存: ../output/kmeans_clustering.png")
 plt.show()

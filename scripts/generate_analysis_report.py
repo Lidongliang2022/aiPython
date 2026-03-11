@@ -7,8 +7,8 @@ from sklearn.cluster import KMeans
 from sklearn.metrics.pairwise import euclidean_distances
 
 # 加载数据
-embeddings = np.load('embeddings.npy')
-df = pd.read_excel('conversations_with_summary.xlsx')
+embeddings = np.load('../data/embeddings.npy')
+df = pd.read_excel('../data/conversations_with_summary.xlsx')
 
 # K-Means聚类 (K=5)
 kmeans = KMeans(n_clusters=5, random_state=42, n_init=10)
@@ -103,7 +103,7 @@ for i in range(5):
     output.append("---\n\n")
 
 # 保存文档
-with open('cluster_analysis_report.md', 'w', encoding='utf-8') as f:
+with open('../output/cluster_analysis_report.md', 'w', encoding='utf-8') as f:
     f.writelines(output)
 
-print("✅ 分析报告已生成: cluster_analysis_report.md")
+print("✅ 分析报告已生成: ../output/cluster_analysis_report.md")
