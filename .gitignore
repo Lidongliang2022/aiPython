@@ -1,0 +1,8 @@
+data_analysis_project/data/*.csv
+data_analysis_project/data/*.tsv
+data_analysis_project/output/
+browser_automation/.env
+browser_automation/profiles/
+.DS_Store
+__pycache__/
+*.pyc
