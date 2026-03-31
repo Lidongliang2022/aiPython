@@ -19,7 +19,7 @@ with st.sidebar:
     
     api_key = st.text_input("OpenAI API Key", value=os.getenv("OPENAI_API_KEY", ""), type="password")
     base_url = st.text_input("API Base URL", value=os.getenv("OPENAI_API_BASE", "https://api.openai.com/v1"))
-    model_name = st.selectbox("选择模型", ["doubao-seed-2.0-pro"], index=0)
+    model_name = st.selectbox("选择模型", ["deepseek-v3.1"], index=0)
     
     st.divider()
     
@@ -57,11 +57,17 @@ if st.button("开始执行", type="primary") and task_input:
                 browser = Browser(browser_profile=profile)
                 
                 # 初始化 LLM
-                llm = ChatOpenAI(
+                # 明确使用 browser_use 的 ChatOpenAI
+                from browser_use.llm.openai.chat import ChatOpenAI as BrowserUseChatOpenAI
+                llm = BrowserUseChatOpenAI(
                     model=model_name,
                     api_key=api_key,
                     base_url=base_url
                 )
+                
+                # 再次确认 provider 属性存在
+                if not hasattr(llm, 'provider'):
+                    object.__setattr__(llm, 'provider', 'openai')
                 
                 # 初始化 Agent
                 agent = Agent(
