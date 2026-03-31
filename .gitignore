@@ -1,8 +1,11 @@
 data_analysis_project/data/*.csv
 data_analysis_project/data/*.tsv
 data_analysis_project/output/
-browser_automation/.env
-browser_automation/profiles/
+browser_automation/browser-use/.env
+browser_automation/browser-use/profiles/
+browser_automation/mcp_route/.env
+browser_automation/mcp_route/mcp_profiles/
+browser_automation/mcp_route/*.png
 .DS_Store
 __pycache__/
 *.pyc

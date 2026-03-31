@@ -1,0 +1,4 @@
+mcp
+playwright
+langchain-openai
+python-dotenv
